@@ -358,6 +358,11 @@ input:invalid:not(:placeholder-shown):not(:focus) {
 
 .state { width: 100%; display: flex; flex-direction: column; align-items: center; }
 
+/* Without this, the browser's default [hidden]{display:none} rule loses to
+   the .state{display:flex} rule above (author styles beat UA styles at equal
+   specificity), so hidden state panels stayed visible and stacked. */
+.state[hidden] { display: none; }
+
 /* gauge */
 .gauge { width: 100%; max-width: 260px; overflow: visible; margin-bottom: 8px; }
 .gauge-track {
